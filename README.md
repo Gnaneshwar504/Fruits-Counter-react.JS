@@ -130,3 +130,198 @@ Use these files to complete the implementation:
 > - **Do not remove the pre-filled code**
 > - Want to quickly review some of the concepts you’ve been learning? Take a look at the Cheat Sheets.
 # Fruits-Counter-react.JS
+
+    
+    /////index.css ////////////////////////////////////////
+    .fruits-counter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffd569;
+  height: 100vh;
+}
+
+.fruits-counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 16px;
+  width: 90%;
+  padding: 24px;
+  max-width: 1110px;
+}
+
+@media screen and (min-width: 768px) {
+  .fruits-counter {
+    width: 80%;
+    padding-top: 96px;
+    padding-left: 64px;
+    padding-right: 64px;
+    padding-bottom: 96px;
+  }
+}
+
+.count-text {
+  text-align: center;
+  color: #000000;
+  font-family: 'Roboto';
+  font-size: 20px;
+  font-weight: 700;
+}
+
+@media screen and (min-width: 768px) {
+  .count-text {
+    font-size: 48px;
+  }
+}
+
+.count {
+  color: #ffd569;
+}
+
+.counters-control-container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .counters-control-container {
+    flex-direction: row;
+  }
+}
+
+.counter-control {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .counter-control {
+    margin-top: 96px;
+    margin-left: 48px;
+    margin-right: 48px;
+  }
+}
+
+.fruit-image {
+  width: 200px;
+  height: 175px;
+}
+
+@media screen and (min-width: 992px) {
+  .fruit-image {
+    width: 296px;
+    height: 275px;
+  }
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .button-container {
+    margin-top: 48px;
+  }
+}
+
+.button {
+  color: #ffffff;
+  background-color: #007bff;
+  font-size: 12px;
+  font-family: 'Roboto';
+  border: none;
+  border-radius: 4px;
+  padding-left: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 16px;
+  outline: none;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .button {
+    font-size: 16px;
+  }
+}
+
+    
+    
+    ///////index.js/////////////////////////////////////////
+    import {Component} from 'react'
+
+import './index.css'
+
+class FruitsCounter extends Component {
+  state = {
+    mangoesCount: 0,
+    bananasCount: 0,
+  }
+
+  onClickEatBanana = () => {
+    this.setState(prevState => ({bananasCount: prevState.bananasCount + 1}))
+  }
+
+  onClickEatMango = () => {
+    this.setState(prevState => ({mangoesCount: prevState.mangoesCount + 1}))
+  }
+
+  render() {
+    const {mangoesCount, bananasCount} = this.state
+
+    return (
+      <div className="fruits-counter-container">
+        <div className="fruits-counter">
+          <h1 className="count-text">
+            Bob ate <span className="count">{mangoesCount}</span> mangoes
+            <span className="count"> {bananasCount}</span> bananas
+          </h1>
+          <div className="counters-control-container">
+            <div className="counter-control">
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/mango-img.png"
+                alt="mango"
+                className="fruit-image"
+              />
+              <div className="button-container">
+                <button
+                  type="button"
+                  className="button"
+                  onClick={this.onClickEatMango}
+                >
+                  Eat Mango
+                </button>
+              </div>
+            </div>
+            <div className="counter-control">
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/banana-img.png"
+                alt="banana"
+                className="fruit-image"
+              />
+              <div className="button-container">
+                <button
+                  type="button"
+                  className="button"
+                  onClick={this.onClickEatBanana}
+                >
+                  Eat Banana
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+
+export default FruitsCounter
+
+    
